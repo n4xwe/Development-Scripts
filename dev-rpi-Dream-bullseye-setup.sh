@@ -44,6 +44,7 @@ cd ~/src/DREAM
 
 #Download the faac library source code from Sourceforge
 wget https://sourceforge.net/projects/faac/files/faac-src/faac-1.30/faac-1_30.tar.gz
+  { echo 'Unable to download the faac source code'; exit 1; }
 
 #Extract the faac source code files
 tar zxf faac-1_30.tar.gz
@@ -66,9 +67,10 @@ sudo ldconfig
 #Move the current directory up one level to ~/src/DREAM
 cd ~/src/DREAM
 
-#Download the Dream 2.2.1 source code from Sourceforge
+#Download the modified Dream 2.2.1 source code from Sourceforge
 svn checkout -r1375 https://svn.code.sf.net/p/drm/code/branches/dream-mjf
-
+  { echo 'Unable to download the Dream 2.2.1 source code'; exit 1; }
+  
 #Change the directory containing the Dream source code to the current directory
 cd dream-mjf
 
