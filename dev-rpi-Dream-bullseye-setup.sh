@@ -1,16 +1,16 @@
 #!/bin/bash
-#install Dream(2.2) with FAAD2(2.7) and FAAC(1.30)
-#N4XWE 11-24-2021
+#install Dream(2.2.1) with FAAD2(2.8.8) and FAAC(1.30)
+#N4XWE 11-28-2021
 #Compiled on RaspiOS-bullseye dtd 2021-10-30 32-bit
 
 #Update the apt cache and upgrade the system packages to their latest versions
 sudo apt update && sudo apt upgrade -y
 
 #Install the required dependencies
-sudo apt install -y libqwt-qt5-6 libqwt-qt5-dev g++ unzip make libsysfs-dev automake \
-apt-utils libqt5webkit5-dev libpcap-dev \
-libasound2-dev libspeex1 libspeexdsp1 libtool libtool-bin  libqt5webkit5-dev libpulse-dev \
-qt5-qmake libpcap-dev libspeexdsp-dev subversion
+sudo apt install -y libqwt-qt5-6 libqwt-qt5-dev g++ make libsysfs-dev automake \
+apt-utils libqt5webkit5-dev libpcap-dev libgps28 libgps-dev \
+libasound2-dev libspeex1 libspeexdsp1 libtool libtool-bin  libqt5webkit5-dev \
+libpulse-dev qt5-qmake libpcap-dev libspeexdsp-dev subversion
 
 sudo apt remove libfaad2 -y
 
@@ -33,10 +33,7 @@ cd faad2-2.8.8
 #Compile the faad2 libraries with three CPU cores
 make -j3
 
-#Copy the faad header files to the /usr/include directory
-sudo cp include/faad.h include/neaacdec.h /usr/include
-
-
+#Install the faad2 libraries
 sudo make install
 
 #Link the faad2 library files
@@ -63,16 +60,13 @@ cd faac-1_30
 #Compile the faac libraries with three CPU cores
 make -j3
 
-#Copy the faac header files to the /usr/include directory
-#sudo make install
-
 #Link the faac library files library files
 sudo ldconfig
 
-#Move the current directory up one level to ~/src/Dream
+#Move the current directory up one level to ~/src/DREAM
 cd ~/src/DREAM
 
-#Download the Dream source code from Sourceforge
+#Download the Dream 2.2.1 source code from Sourceforge
 svn checkout -r1375 https://svn.code.sf.net/p/drm/code/branches/dream-mjf
 
 #Change the directory containing the Dream source code to the current directory
@@ -89,9 +83,6 @@ sudo cp dream /usr/local/bin/dream
 
 #Copy the Dream icon to the /usr/share/icons directory
 sudo cp src/GUI-QT/res/MainIcon.svg /usr/share/icons/dream.svg
-
-#Move the current directory up one level
-cd ..
 
 #Add an icon to launch Dream to the Desktop
 echo "[Desktop Entry]
