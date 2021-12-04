@@ -8,8 +8,8 @@ sudo apt update && sudo apt upgrade -y
 
 #Install the required dependencies
 sudo apt install -y libqwt-qt5-6 libqwt-qt5-dev g++ make libsysfs-dev automake \
-apt-utils libqt5webkit5-dev libpcap-dev libgps28 libgps-dev \
-libasound2-dev libspeex1 libspeexdsp1 libtool libtool-bin  libqt5webkit5-dev \
+apt-utils libqt5webkit5-dev libpcap-dev libgps28 libgps-dev libfftw3-dev \
+libasound2-dev libspeex1 libspeexdsp1 libtool libtool-bin libqt5svg5 libqt5svg5-dev \
 libpulse-dev qt5-qmake libpcap-dev libspeexdsp-dev subversion
 
 sudo apt remove libfaad2 -y
@@ -43,7 +43,7 @@ sudo ldconfig
 cd ~/src/DREAM
 
 #Download the faac library source code from Sourceforge
-wget https://sourceforge.net/projects/faac/files/faac-src/faac-1.30/faac-1_30.tar.gz
+wget https://sourceforge.net/projects/faac/files/faac-src/faac-1.30/faac-1_30.tar.gz ||
   { echo 'Unable to download the faac source code'; exit 1; }
 
 #Extract the faac source code files
@@ -68,7 +68,7 @@ sudo ldconfig
 cd ~/src/DREAM
 
 #Download the modified Dream 2.2.1 source code from Sourceforge
-svn checkout -r1375 https://svn.code.sf.net/p/drm/code/branches/dream-mjf
+svn checkout -r1375 https://svn.code.sf.net/p/drm/code/branches/dream-mjf ||
   { echo 'Unable to download the Dream 2.2.1 source code'; exit 1; }
   
 #Change the directory containing the Dream source code to the current directory
