@@ -1,7 +1,7 @@
 
 #!/bin/sh
 #install ka9q-radio
-#KV0S and N4XWE 2-19-2022
+#KV0S and N4XWE 2-19-2022 (Revision A)
 #Compiled on RaspiOS-bullseye dtd 2022-1-28 32-bit
 
 
